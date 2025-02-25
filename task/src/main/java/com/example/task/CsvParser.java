@@ -18,11 +18,11 @@ public class CsvParser {
     CommandLineRunner commandLineRunner(CountryRepository countryRepository,
                                         BankRepository bankRepository) {
         return args -> {
-            if (countryRepository.count() == 0) {  // Tylko jeśli baza jest pusta
+            if (countryRepository.count() == 0) { // check if the database is empty
                 InputStream inputStream = getClass().getClassLoader().getResourceAsStream("SWIFT_CODES.csv");
 
                 if (inputStream == null) {
-                    throw new FileNotFoundException("Nie znaleziono pliku!");
+                    throw new FileNotFoundException("File not found");
                 }
 
                 try (Reader reader = new InputStreamReader(inputStream)) {
