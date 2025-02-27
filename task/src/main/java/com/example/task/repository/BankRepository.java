@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BankRepository extends JpaRepository<Bank, String> {
-    List<Bank> findAllBySwiftCodeContains(String swiftCode);
+    List<Bank> findAllBySwiftCodeStartingWith(String substring);
     List<Bank> findAllByCountry(Country country);
 }
