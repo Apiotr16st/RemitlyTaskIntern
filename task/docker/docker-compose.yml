@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16.3
+    container_name: remitly_task_db
+    restart: always
+    environment:
+      POSTGRES_DB: task_db
+      POSTGRES_USER: user_remitly
+      POSTGRES_PASSWORD: abcd
+    ports:
+      - "5430:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  app:
+    build: ..
+    container_name: remitly_task_app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/task_db
+      SPRING_DATASOURCE_USERNAME: user_remitly
+      SPRING_DATASOURCE_PASSWORD: abcd
+    ports:
+      - "8081:8080"
+
+volumes:
+  postgres_data:
