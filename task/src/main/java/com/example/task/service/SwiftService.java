@@ -8,6 +8,7 @@ import com.example.task.model.Country;
 import com.example.task.model.dto.*;
 import com.example.task.repository.BankRepository;
 import com.example.task.repository.CountryRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,6 +86,7 @@ public class SwiftService {
         );
     }
 
+    @Transactional
     public MessageDTO addNewBank(NewBankDTO newBank) {
         if(newBank.swiftCode() == null)
             throw new InvalidBankDataException("Swift code cannot be empty");
@@ -128,6 +130,7 @@ public class SwiftService {
         countryRepository.save(newCountry);
     }
 
+    @Transactional
     public MessageDTO deleteBank(String swiftCode) {
         bankRepository.findById(swiftCode.toUpperCase())
                 .orElseThrow(() -> new BankNotFoundException(swiftCode));
