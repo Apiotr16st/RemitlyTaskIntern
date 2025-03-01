@@ -11,11 +11,18 @@ services:
       - "5430:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "user_remitly", "-d", "task_db" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
   app:
     build: .
     container_name: remitly_task_app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/task_db
       SPRING_DATASOURCE_USERNAME: user_remitly
