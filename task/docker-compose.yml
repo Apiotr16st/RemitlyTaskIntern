@@ -12,7 +12,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
   app:
-    build: ..
+    build: .
     container_name: remitly_task_app
     depends_on:
       - db

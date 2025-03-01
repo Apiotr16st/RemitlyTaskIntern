@@ -1,4 +1,4 @@
-package com.example.task;
+package com.example.task.parser;
 
 import com.example.task.model.Bank;
 import com.example.task.model.Country;
