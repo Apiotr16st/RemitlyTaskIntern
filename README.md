@@ -55,7 +55,7 @@ Endpoint 1: Retrieve details of a single SWIFT code whether for a headquarters o
 - GET: /v1/swift-codes/{swift-code} 
 
 Response Structure for headquarter swift code:
-```json
+```js
 {
     "address": string,
     "bankName": string,
@@ -77,7 +77,7 @@ Response Structure for headquarter swift code:
         "countryISO2": string,
         "isHeadquarter": bool,
         "swiftCode": string
-        }, . . .
+        }, ...
     ]
 }
 
@@ -85,7 +85,7 @@ Response Structure for headquarter swift code:
 
 Response Structure for branch swift code: 
 
-```json
+```js
 {
     "address": string,
     "bankName": string,
@@ -100,7 +100,7 @@ Endpoint 2: Return all SWIFT codes with details for a specific country (both hea
 - GET:  /v1/swift-codes/country/{countryISO2code}
 
 Response Structure :
-```json
+```js
 {
     "countryISO2": string,
     "countryName": string,
@@ -118,7 +118,7 @@ Response Structure :
     		 "countryISO2": string,
     		 "isHeadquarter": bool,
     		 "swiftCode": string
-        }, . . .
+        }, ...
     ]
 }
 ```
@@ -128,7 +128,7 @@ Endpoint 3: Adds new SWIFT code entries to the database for a specific country.
 
 Request Structure :
 
-```json
+```js
 {
     "address": string,
     "bankName": string,
@@ -140,7 +140,7 @@ Request Structure :
 ```
 Response Structure: 
 
-```json
+```js
 {
     "message": string,
 }
@@ -152,7 +152,7 @@ Endpoint 4: Deletes swift-code data if swiftCode matches the one in the database
 
 Response Structure: 
 
-```json
+```js
 {
     "message": string,
 }
